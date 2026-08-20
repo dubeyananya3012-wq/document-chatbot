@@ -9,9 +9,22 @@ markdown/docx.
 """
 from dataclasses import dataclass
 
-from docling.document_converter import DocumentConverter
+from docling.document_converter import DocumentConverter, PdfFormatOption
+from docling.datamodel.base_models import InputFormat
+from docling.datamodel.pipeline_options import PdfPipelineOptions
 
-_converter = DocumentConverter()
+# Lightweight pipeline: disable OCR and table-structure models to save
+# hundreds of MB of RAM on memory-constrained hosts (Render free tier).
+# Turn these back on only if you need scanned-PDF OCR or structured tables.
+_pipeline_options = PdfPipelineOptions()
+_pipeline_options.do_ocr = False
+_pipeline_options.do_table_structure = False
+
+_converter = DocumentConverter(
+    format_options={
+        InputFormat.PDF: PdfFormatOption(pipeline_options=_pipeline_options)
+    }
+)
 
 
 @dataclass
