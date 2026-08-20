@@ -7,6 +7,7 @@ filter on user_id from the verified token - never from client input.
 Chroma Cloud is a drop-in replacement for local ChromaDB that avoids
 the local-disk-doesn't-persist problem on free hosting tiers.
 """
+import logging
 import uuid
 
 import chromadb
@@ -14,15 +15,26 @@ import numpy as np
 
 from app.config import get_settings
 
+logger = logging.getLogger(__name__)
 settings = get_settings()
 
-_client = chromadb.CloudClient(
-    tenant=settings.CHROMA_TENANT,
-    database=settings.CHROMA_DATABASE,
-    api_key=settings.CHROMA_API_KEY,
-)
+_client = None
+_collection = None
 
-_collection = _client.get_or_create_collection(name=settings.CHROMA_COLLECTION)
+
+def _get_collection():
+    """Lazy initialization of ChromaDB Cloud client and collection."""
+    global _client, _collection
+    if _collection is None:
+        logger.info("Initializing ChromaDB Cloud client...")
+        _client = chromadb.CloudClient(
+            tenant=settings.CHROMA_TENANT,
+            database=settings.CHROMA_DATABASE,
+            api_key=settings.CHROMA_API_KEY,
+        )
+        _collection = _client.get_or_create_collection(name=settings.CHROMA_COLLECTION)
+        logger.info("ChromaDB Cloud client initialized successfully.")
+    return _collection
 
 
 def add_chunks(
@@ -44,7 +56,7 @@ def add_chunks(
         for i in range(len(chunks))
     ]
 
-    _collection.add(ids=ids, documents=chunks, metadatas=metadatas)
+    _get_collection().add(ids=ids, documents=chunks, metadatas=metadatas)
     return len(chunks)
 
 
@@ -106,7 +118,8 @@ def query_user_documents(user_id: str, question: str, top_k: int = 5) -> dict:
     """
     fetch_k = max(settings.MMR_FETCH_K, top_k) if settings.MMR_ENABLED else top_k
 
-    raw = _collection.query(
+    collection = _get_collection()
+    raw = collection.query(
         query_texts=[question],
         n_results=fetch_k,
         where={"user_id": user_id},
@@ -128,7 +141,7 @@ def query_user_documents(user_id: str, question: str, top_k: int = 5) -> dict:
     if not settings.MMR_ENABLED or not embeddings or len(kept) <= top_k:
         final_idx = kept[:top_k]
     else:
-        query_embedding = _collection._embedding_function([question])[0]
+        query_embedding = collection._embedding_function([question])[0]
         query_embedding = np.array(query_embedding)
         candidate_embeddings = [np.array(embeddings[i]) for i in kept]
         mmr_order = _mmr_select(query_embedding, candidate_embeddings, top_k, settings.MMR_LAMBDA)
@@ -143,6 +156,6 @@ def query_user_documents(user_id: str, question: str, top_k: int = 5) -> dict:
 
 def delete_user_document(user_id: str, filename: str) -> None:
     # Chroma requires $and for multi-field where clauses
-    _collection.delete(
+    _get_collection().delete(
         where={"$and": [{"user_id": user_id}, {"filename": filename}]}
     )
