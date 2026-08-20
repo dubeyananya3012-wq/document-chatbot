@@ -1,0 +1,113 @@
+﻿.\venv\Scripts\uvicorn.
+exe : INFO:     Will 
+watch for changes in 
+these directories: ['C:
+\\Users\\Administrator\
+\Downloads\\document-ch
+atbot\\backend']
+At line:1 char:1
++ .\venv\Scripts\uvicor
+n.exe app.main:app 
+--reload --port 8000 > 
+uvicor ...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (INFO:     Wil   
+ l ...tbot\\backend    
+']:String) [], Rem    
+oteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+INFO:     Uvicorn 
+running on 
+http://127.0.0.1:8000 
+(Press CTRL+C to quit)
+INFO:     Started 
+reloader process 
+[19188] using 
+WatchFiles
+INFO:     Started 
+server process [3984]
+INFO:     Waiting for 
+application startup.
+INFO:     Application 
+startup complete.
+WARNING:  WatchFiles 
+detected changes in 'ap
+p\services\upload_log.p
+y'. Reloading...
+2026-08-20 
+22:47:57,432 DEBUG 
+urllib3.util.retry: 
+Converted retries 
+value: 3 -> 
+Retry(total=3, 
+connect=None, 
+read=None, 
+redirect=None, 
+status=None)
+2026-08-20 
+22:47:57,439 DEBUG cach
+econtrol.controller: 
+Looking up "https://www
+.googleapis.com/robot/v
+1/metadata/x509/securet
+oken@system.gserviceacc
+ount.com" in the cache
+2026-08-20 
+22:47:57,440 DEBUG cach
+econtrol.controller: 
+No cache entry 
+available
+2026-08-20 
+22:47:57,440 DEBUG cach
+econtrol.controller: 
+No cache entry 
+available
+2026-08-20 
+22:47:57,441 DEBUG urll
+ib3.connectionpool: 
+Starting new HTTPS 
+connection (1): 
+www.googleapis.com:443
+2026-08-20 
+22:47:58,346 DEBUG urll
+ib3.connectionpool: htt
+ps://www.googleapis.com
+:443 "GET /robot/v1/met
+adata/x509/securetoken@
+system.gserviceaccount.
+com HTTP/1.1" 200 3558
+2026-08-20 
+22:47:58,350 DEBUG cach
+econtrol.controller: 
+Updating cache with 
+response from "https://
+www.googleapis.com/robo
+t/v1/metadata/x509/secu
+retoken@system.gservice
+account.com"
+2026-08-20 
+22:47:58,350 DEBUG cach
+econtrol.controller: 
+Caching b/c date 
+exists and max-age > 0
+2026-08-20 
+22:47:58,394 DEBUG urll
+ib3.connectionpool: 
+Starting new HTTPS 
+connection (1): oauth2.
+googleapis.com:443
+2026-08-20 
+22:47:59,282 DEBUG urll
+ib3.connectionpool: htt
+ps://oauth2.googleapis.
+com:443 "POST /token 
+HTTP/1.1" 200 None
+

@@ -65,10 +65,12 @@ def get_history_for_user(uploader: str) -> list[dict]:
         _get_db()
         .collection("upload_log")
         .where("uploader", "==", uploader)
-        .order_by("timestamp", direction=firestore.Query.DESCENDING)
         .stream()
     )
-    return [d.to_dict() for d in docs]
+    results = [d.to_dict() for d in docs]
+    # Sort in memory by timestamp descending
+    results.sort(key=lambda x: x.get("timestamp", ""), reverse=True)
+    return results
 
 
 def get_current_documents(uploader: str) -> list[dict]:

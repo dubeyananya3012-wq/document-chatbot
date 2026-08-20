@@ -1,0 +1,144 @@
+﻿.\venv\Scripts\python.e
+xe : Traceback (most 
+recent call last):
+At line:1 char:1
++ .\venv\Scripts\python
+.exe 
+test_chroma_delete.py 
+> test_out.log 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (Traceback (mo   
+ st recent call las    
+t)::String) [], Re    
+moteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+  File "C:\Users\Admini
+strator\Downloads\docum
+ent-chatbot\backend\tes
+t_chroma_delete.py", 
+line 17, in <module>
+    col = 
+_get_collection()
+  File "C:\Users\Admini
+strator\Downloads\docum
+ent-chatbot\backend\app
+\services\vectorstore.p
+y", line 30, in 
+_get_collection
+    _client = 
+chromadb.CloudClient(
+        tenant=settings
+.CHROMA_TENANT,
+        database=settin
+gs.CHROMA_DATABASE,
+        api_key=setting
+s.CHROMA_API_KEY,
+    )
+  File "C:\Users\Admini
+strator\Downloads\docum
+ent-chatbot\backend\ven
+v\Lib\site-packages\chr
+omadb\__init__.py", 
+line 443, in 
+CloudClient
+    return ClientCreato
+r(tenant=tenant, 
+database=database, 
+settings=settings)
+  File "C:\Users\Admini
+strator\Downloads\docum
+ent-chatbot\backend\ven
+v\Lib\site-packages\chr
+omadb\api\client.py", 
+line 105, in __init__
+    self._validate_tena
+nt_database(tenant=self
+.tenant, 
+database=self.database)
+    ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^
+  File "C:\Users\Admini
+strator\Downloads\docum
+ent-chatbot\backend\ven
+v\Lib\site-packages\chr
+omadb\api\client.py", 
+line 655, in _validate_
+tenant_database
+    self._admin_client.
+get_database(name=datab
+ase, tenant=tenant)
+    ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admini
+strator\Downloads\docum
+ent-chatbot\backend\ven
+v\Lib\site-packages\chr
+omadb\api\client.py", 
+line 694, in 
+get_database
+    return self._server
+.get_database(name=name
+, tenant=tenant)
+           ~~~~~~~~~~~~
+~~~~~~~~~~~~~^^^^^^^^^^
+^^^^^^^^^^^^^^^^
+  File "C:\Users\Admini
+strator\Downloads\docum
+ent-chatbot\backend\ven
+v\Lib\site-packages\chr
+omadb\telemetry\opentel
+emetry\__init__.py", 
+line 150, in wrapper
+    return f(*args, 
+**kwargs)
+  File "C:\Users\Admini
+strator\Downloads\docum
+ent-chatbot\backend\ven
+v\Lib\site-packages\chr
+omadb\api\fastapi.py", 
+line 166, in 
+get_database
+    resp_json = 
+self._make_request(
+        "get",
+Getting collection...
+Error occurred during delete:
+        f"/tenants/{ten
+ant}/databases/{name}",
+    )
+  File "C:\Users\Admini
+strator\Downloads\docum
+ent-chatbot\backend\ven
+v\Lib\site-packages\chr
+omadb\api\fastapi.py", 
+line 132, in 
+_make_request
+    BaseHTTPClient._rai
+se_chroma_error(respons
+e)
+    ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~^^^^^^^^
+^^
+  File "C:\Users\Admini
+strator\Downloads\docum
+ent-chatbot\backend\ven
+v\Lib\site-packages\chr
+omadb\api\base_http_cli
+ent.py", line 129, in 
+_raise_chroma_error
+    raise chroma_error
+chromadb.errors.NotFoun
+dError: Database 
+[default] not found. 
+Are you sure it exists?
+

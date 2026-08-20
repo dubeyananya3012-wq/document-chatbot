@@ -1,0 +1,41 @@
+﻿.\venv\Scripts\python.e
+xe : INFO:     Will 
+watch for changes in 
+these directories: ['C:
+\\Users\\Administrator\
+\Downloads\\document-ch
+atbot\\backend']
+At line:1 char:1
++ .\venv\Scripts\python
+.exe -m uvicorn 
+app.main:app --reload 
+--port 800 ...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (INFO:     Wil   
+ l ...tbot\\backend    
+']:String) [], Rem    
+oteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+INFO:     Uvicorn 
+running on 
+http://127.0.0.1:8000 
+(Press CTRL+C to quit)
+INFO:     Started 
+reloader process 
+[13116] using 
+WatchFiles
+INFO:     Started 
+server process [23144]
+INFO:     Waiting for 
+application startup.
+INFO:     Application 
+startup complete.
+

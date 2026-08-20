@@ -1,0 +1,9 @@
+﻿API Key: ck-Gsnos1H...
+Tenant: a6d63315-2600-40df-91f7-cb7c9f1145dd
+Attempting to connect with AdminClient...
+Admin client initialized.
+Existing databases of tenant: []
+Database 'default' not found. Trying to create it...
+Successfully created 'default' database!
+Databases now: [{'id': 'c1e37b6f-9fad-4c2b-9c00-96a4943a45c8', 'name': 'default', 'tenant': 'a6d63315-2600-40df-91f7-cb7c9f1145dd'}]
+
