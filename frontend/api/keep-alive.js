@@ -1,6 +1,6 @@
 export default async function handler(request, response) {
   // Read target backend API from environment variables, fallback to local default
-  const backendBaseUrl = process.env.VITE_API_BASE_URL || 'http://localhost:8000';
+  const backendBaseUrl = process.env.API_BASE_URL || 'http://localhost:8000';
   const healthUrl = `${backendBaseUrl.replace(/\/$/, '')}/health`;
 
   try {

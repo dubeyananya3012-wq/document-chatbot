@@ -1,14 +1,14 @@
 fastapi==0.115.0
 uvicorn[standard]==0.30.6
 python-multipart==0.0.9
-pydantic==2.9.2
-pydantic-settings==2.5.2
+pydantic>=2.9.2,<3.0.0
+pydantic-settings>=2.14.0,<3.0.0
 
 # Auth
 firebase-admin==6.5.0
 
 # Document parsing
-docling==2.4.2
+docling==2.121.0
 
 # Vector store
 chromadb==0.5.15
@@ -21,7 +21,7 @@ google-cloud-firestore==2.19.0
 groq==0.11.0
 
 # Token counting
-tiktoken==0.7.0
+tiktoken==0.14.0
 
 # Rate limiting
 slowapi==0.1.9
